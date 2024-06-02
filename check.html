@@ -1,0 +1,271 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>검사페이지_dhyn2300</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="assets/css/main.css">
+    
+
+    <style>
+        html {
+            width: 100%;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .outer-container {
+            width: 100vw;
+            height: 94vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .inner-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 2fr 1fr 0.3fr;
+            gap: 0px;
+            width: 100%;
+            height: 100%;
+        }
+
+        .boxx {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+        }
+
+        .box1 {
+           background-color: white;
+           grid-column: 1 / 2;
+           grid-row: 1 / 2;
+           display: flex;
+           flex-direction: column;
+           justify-content: center;
+           align-items: center;
+           position: relative;
+        }
+
+        #character {
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            bottom: 0;
+        }
+
+        .box34 {
+            background-color: white;
+            grid-column: 1 / 2;
+            grid-row: 2 / 3;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .box5 {
+            background-color: white;
+            grid-column: 1 / 2;
+            grid-row: 3 / 4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        #question {
+            font-size: 18px;
+            display: none;
+            position: absolute;
+            top: 20px;
+            bottom: 260px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding-top: 20px;
+            padding-left: 10px;
+            padding-right: 10px;
+            background: white;
+            border: 1px solid gray;
+            border-radius: 5px;
+            min-width: 90%;
+            text-align: center;
+
+        }
+
+        #result {
+            display: none;
+            font-size: 24px;
+        }
+
+        #answer-container {
+            display: none;
+            flex-direction: row;
+            align-items: center;
+            gap: 5px;
+        }
+
+        #image {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        #character {
+            width: 200px;
+            height: 200px;
+            margin-bottom: 20px;
+        }
+
+        .question-container {
+            font-weight: bold;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        /* 보내기 버튼 스타일 */
+        #answer-container button {
+            
+            border: 1.5px solid gray;
+            font-size: 12px;
+            width: 80px; /* 보내기 버튼을 정사각형으로 만듦 */
+            height: 50px; /* 보내기 버튼을 정사각형으로 만듦 */
+        }
+        
+        /* 입력란 스타일 */
+        #answer {
+            border: 1.5px solid gray;
+            width: 300px; /* 입력란을 가로로 길게 만듦 */
+            height: 50px; /* 보내기 버튼과 높이를 맞춤 */
+            text-align: center;
+
+        }
+        
+    </style>
+</head>
+
+<body>
+    <header id="header" class="alt">
+        <div class="logo">
+            <a href="https://www.instagram.com/dhyn2300/">Dhyn2300</a>
+        </div>
+        <a href="#menu"></a>
+    </header>
+
+    <nav id="menu">
+        <ul class="links">
+            <li><a href="index.html">Saver_AI</a></li>
+            <li><a href="check.html">검사하기</a></li>
+        </ul>
+    </nav>
+    <footer id="footer">
+        <div class="container"></footer>
+        <div class="outer-container">
+            <div class="inner-container">
+                <div class="boxx box1">
+                    <div class="question-container">
+                        <img id="character" src="images/hikonyang.png" alt="Konyang">
+                        <div id="question">
+                            <p id="question-text"></p>
+                        </div>
+                    </div>
+                    <div id="result">
+                        <p id="result-text"></p>
+                    </div>
+                </div>
+                <div class="boxx box34">
+                    <img id="image" src="" alt="Question Image">
+                </div>
+                <div class="boxx box5">
+                    <div id="answer-container">
+                        <input type="text" id="answer" />
+                        <button onclick="nextQuestion()">전송</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="assets/js/jquery.min.js"></script>
+            <script src="assets/js/jquery.scrollex.min.js"></script>
+            <script src="assets/js/skel.min.js"></script>
+            <script src="assets/js/util.js"></script>
+            <script src="assets/js/main.js"></script>
+        <script>
+            
+            const questions = [
+            { text: "검사를 진행하기전에 몇 가지 부탁을 드릴게요.<br><br>- 조용하고 분리된 공간<br>- 솔직한 응답<br>- 암기 내용 기록 금지<br><br>위 규칙을 이해하셨으면 숫자 1을 입력해주세요.", score: { 1: 5, default: 0 } },
+            { text: "잘 하셨습니다!<br>답은 없으니 편안한 마음으로 검사에 임해주세요. <br><br><br><br><br>숫자 2을 입력해주세요.", score: { 2: 5, default: 0 } },
+            { text: "첫 번째 질문입니다.<br>올해의 년도와 무엇을 하고있는지 골라주세요.<br><br>1. 2013년 치매조기검진<br> 2. 2002년 영상의학검사<br>3. 2024년 치매조기검진<br>4. 1992년 종합건강검진", score: { 1 : 3, 2: 0, 3: 5, 4 : 0,  default: 0 } },
+            { text: '두 번째 질문입니다.<br>지금부터 외우셔야 하는 문장입니다. <br> 문장을 기록하지 말아주세요.<br><br> "민수는 공원에 가서 11시부터 야구를 했다." <br><br> 암기하셨으면 숫자 1을 입력해주세요.', score: { 1: 5, default: 0 } },
+            { text: '세 번째 질문입니다.<br>다음 빈 칸에 들어갈 단어를 골라주세요.<br><br> "독도는 [ㅤㅤ]이다"<br><br>1. 우리땅ㅤㅤ2. 삥땅ㅤㅤ3. 라면땅', score: { 1: 5, default: 0 } },
+            { text: '네 번째 질문입니다.<br>다음 문장에서 이야기가 일어난 장소를 골라주세요.<br><br>"여름 날씨가 무더워서 오후에 시원한 카페로 휴식을 취하러 갔다 창가에는 푸른 나무가 그늘을 만들었다."<br><br>1. 그늘ㅤㅤ2. 카페ㅤㅤ3. 창가', score: { 2: 5, default: 0 } },
+            { text: '다섯 번째 질문입니다.<br>카드에 숫자와 계절이 하나씩 적혀있습니다.<br>첫 번째 빈 칸에는 무엇이 들어갈까요?<br><br>1. 겨울ㅤㅤ2. "4"ㅤㅤ3. 여름', score: { 2: 5, default: 0 } },
+            { text: '여섯 번째 질문입니다.<br>카드에 도형이 규칙적으로 적혀있습니다.<br>빈칸의 카드에는 어떤 도형이 들어갈까요?<br><br>1. 네모ㅤㅤ2. 동그라미ㅤㅤ3. 세모', score: { 2: 5, default: 0 } },
+            { text: "일곱 번째 질문입니다.<br>아까 외운 문장의 요소들을 골라주세요<br><br>1.철수, 오후10시, 롤<br>2.민수, 오전11시, 야구<br>3.영희, 산책, 오전 11시<br>4.민수, 오후 11시, 테니스", score: { 2: 5, default: 0 } },
+            { text: "여덟 번째 질문입니다.<br>그림의 이름을 골라주세요<br><br>1. 치약<br>2. 양치<br>3. 칫솔", score: { 3: 5, default: 0 } },
+            { text: "<br><br>수고하셨습니다<br>감사합니다 <br>늘 건강하세요<br><br>숫자 0을 넣어 결과를 확인해주세요", score: { default: 0 } },
+        ];
+
+
+            const images = [
+                "images/screenshot.png",
+                "images/screenshot.png",
+                "images/screenshot.png",
+                "images/screenshot.png",
+                "images/screenshot.png",
+                "images/screenshot.png",
+                "images/image.png",
+                "images/iimage.png",
+                "images/screenshot.png",
+                "images/brush.png",
+                "images/screenshot.png",
+            ];
+
+            let currentQuestionIndex = 0;
+            let score = 0;
+
+            function startQuiz() {
+                document.getElementById('question').style.display = 'block';
+                document.getElementById('answer-container').style.display = 'flex';
+                document.getElementById('question-text').innerHTML = questions[currentQuestionIndex].text;
+                document.getElementById('image').src = images[currentQuestionIndex];
+            }
+
+            function nextQuestion() {
+                const answer = document.getElementById('answer').value;
+                recordScore(currentQuestionIndex, answer);
+                document.getElementById('answer').value = '';
+                currentQuestionIndex++;
+
+                if (currentQuestionIndex < questions.length) {
+                    document.getElementById('question-text').innerHTML = questions[currentQuestionIndex].text;
+                    document.getElementById('image').src = images[currentQuestionIndex];} else {showResult();}}
+            function recordScore(questionIndex, answer) {
+                const question = questions[questionIndex];
+                const scoreToAdd = question.score[answer] || question.score.default;
+                score += scoreToAdd;
+            }
+            function showResult() {
+                document.getElementById('question').style.display = 'none';
+                document.getElementById('answer-container').style.display = 'none';
+                document.getElementById('result').style.display = 'block';
+                document.getElementById('image').style.display = 'none';
+                let status = '';
+                if (score <= 30) {
+                    status = "치매가 의심되니 병원에서 검진을 받아주세요";
+                } else if (score >= 35) {
+                    status = "정상입니다 ㅎㅎ";
+                } else {
+                    status = "엥 진짜 이거 어캐함?";
+                }
+                document.getElementById('result-text').innerHTML = `결과는 ${score}점입니다.<br>${status}`;
+            }
+            window.onload = startQuiz;
+        </script>
+    </body>
+</html>

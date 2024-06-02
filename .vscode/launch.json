@@ -1,0 +1,11 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Open index.html",
+            "file": "c:\\Users\\dhyn2\\OneDrive\\바탕 화면\\university\\1학년1학기\\ESG지역사회문제해결\\dementiaEarlyDiagnosisAI\\index.html"
+        }
+    ]
+}
