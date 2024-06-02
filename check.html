@@ -55,11 +55,13 @@
         }
 
         #character {
-            width: 200px;
-            height: 200px;
-            position: absolute;
-            bottom: 0;
-        }
+    width: 80px; /* 크기를 조정합니다 */
+    height: 80px; /* 크기를 조정합니다 */
+    position: absolute;
+    top: calc(60% + 30px); /* box1 바로 아래에 위치시킵니다 */
+    left: 50%;
+    transform: translateX(-50%);
+}ㄴ
 
         .box34 {
             background-color: white;
@@ -81,23 +83,23 @@
         }
 
         #question {
-            font-size: 18px;
-            display: none;
-            position: absolute;
-            top: 20px;
-            bottom: 260px;
-            left: 50%;
-            transform: translateX(-50%);
-            padding-top: 20px;
-            padding-left: 10px;
-            padding-right: 10px;
-            background: white;
-            border: 1px solid gray;
-            border-radius: 5px;
-            min-width: 90%;
-            text-align: center;
-
-        }
+    font-size: 16px;
+    display: none;
+    position: fixed; /* 수정 */
+    top: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding-top: 40px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background: white;
+    border: 1px solid gray;
+    border-radius: 5px;
+    width: 95%; /* 수정 */
+    max-width: 600px; /* 추가 */
+    text-align: center;
+    z-index: 999; /* 추가 */
+}
 
         #result {
             display: none;
@@ -117,9 +119,9 @@
         }
 
         #character {
-            width: 200px;
-            height: 200px;
-            margin-bottom: 20px;
+            width: 150px;
+            height: 150px;
+            margin-bottom: 10px;
         }
 
         .question-container {
@@ -128,6 +130,7 @@
             flex-direction: column;
             align-items: center;
         }
+        
         
         /* 보내기 버튼 스타일 */
         #answer-container button {
@@ -208,7 +211,7 @@
             { text: '여섯 번째 질문입니다.<br>카드에 도형이 규칙적으로 적혀있습니다.<br>빈칸의 카드에는 어떤 도형이 들어갈까요?<br><br>1. 네모ㅤㅤ2. 동그라미ㅤㅤ3. 세모', score: { 2: 5, default: 0 } },
             { text: "일곱 번째 질문입니다.<br>아까 외운 문장의 요소들을 골라주세요<br><br>1.철수, 오후10시, 롤<br>2.민수, 오전11시, 야구<br>3.영희, 산책, 오전 11시<br>4.민수, 오후 11시, 테니스", score: { 2: 5, default: 0 } },
             { text: "여덟 번째 질문입니다.<br>그림의 이름을 골라주세요<br><br>1. 치약<br>2. 양치<br>3. 칫솔", score: { 3: 5, default: 0 } },
-            { text: "<br><br>수고하셨습니다<br>감사합니다 <br>늘 건강하세요<br><br>숫자 0을 넣어 결과를 확인해주세요", score: { default: 0 } },
+            { text: "수고하셨습니다<br>늘 건강하세요<br><br>숫자 0을 넣어 결과를 확인해주세요", score: { default: 0 } },
         ];
 
 
