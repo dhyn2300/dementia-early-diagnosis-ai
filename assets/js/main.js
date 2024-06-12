@@ -21,20 +21,14 @@ var settings = {
 		xsmall:	'(max-width: 480px)'
 	});
 	$.fn._parallax = (skel.vars.browser == 'ie' || skel.vars.mobile) ? function() { return $(this) } : function(intensity) {
-
 		var	$window = $(window),
 			$this = $(this);
-
 		if (this.length == 0 || intensity === 0)
 			return $this;
-
 		if (this.length > 1) {
-
 			for (var i=0; i < this.length; i++)
 				$(this[i])._parallax(intensity);
-
 			return $this;
-
 		}
 		if (!intensity)
 			intensity = 0.25;
@@ -52,47 +46,31 @@ var settings = {
 					.css('background-position', '');
 				$window
 					.off('scroll._parallax');
-
 			};
-
 			skel.on('change', function() {
-
 				if (skel.breakpoint('medium').active)
 					(off)();
 				else
 					(on)();
-
 			});
-
 		});
-
 		$window
 			.off('load._parallax resize._parallax')
 			.on('load._parallax resize._parallax', function() {
 				$window.trigger('scroll');
 			});
-
 		return $(this);
-
 	};
-
 	$.fn._slider = function(options) {
-
 		var	$window = $(window),
 			$this = $(this);
-
 		if (this.length == 0)
 			return $this;
-
 		if (this.length > 1) {
-
 			for (var i=0; i < this.length; i++)
 				$(this[i])._slider(options);
-
 			return $this;
-
 		}
-
 			var	current = 0, pos = 0, lastPos = 0,
 				slides = [], indicators = [],
 				$indicators,
@@ -100,17 +78,12 @@ var settings = {
 				intervalId,
 				isLocked = false,
 				i = 0;
-
 			if ($slides.length == 1)
 				options.indicators = false;
-
 			$this._switchTo = function(x, stop) {
-
 				if (isLocked || pos == x)
 					return;
-
 				isLocked = true;
-
 				if (stop)
 					window.clearInterval(intervalId);
 
