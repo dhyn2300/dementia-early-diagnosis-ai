@@ -69,8 +69,7 @@ var settings = {
 		if (this.length > 1) {
 			for (var i=0; i < this.length; i++)
 				$(this[i])._slider(options);
-			return $this;
-		}
+			return $this;}
 			var	current = 0, pos = 0, lastPos = 0,
 				slides = [], indicators = [],
 				$indicators,

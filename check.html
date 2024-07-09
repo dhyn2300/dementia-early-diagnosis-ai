@@ -237,7 +237,6 @@
                 document.getElementById('question-text').innerHTML = questions[currentQuestionIndex].text;
                 document.getElementById('image').src = images[currentQuestionIndex];
             }
-
             function nextQuestion() {
                 const answer = document.getElementById('answer').value;
                 recordScore(currentQuestionIndex, answer);
@@ -250,8 +249,7 @@
             function recordScore(questionIndex, answer) {
                 const question = questions[questionIndex];
                 const scoreToAdd = question.score[answer] || question.score.default;
-                score += scoreToAdd;
-            }
+                score += scoreToAdd;}
             function showResult() {
                 document.getElementById('question').style.display = 'none';
                 document.getElementById('answer-container').style.display = 'none';
@@ -263,10 +261,8 @@
                 } else if (score >= 35) {
                     status = "정상입니다 ㅎㅎ";
                 } else {
-                    status = "엥 진짜 이거 어캐함?";
-                }
-                document.getElementById('result-text').innerHTML = `결과는 ${score}점입니다.<br>${status}`;
-            }
+                    status = "엥 진짜 이거 어캐함?";}
+                document.getElementById('result-text').innerHTML = `결과는 ${score}점입니다.<br>${status}`;}
             window.onload = startQuiz;
         </script>
     </body>
